@@ -1,5 +1,5 @@
 import React from 'react'
-import { BrowserRouter as Router, Route, Switch } from 'react-router-dom'
+import { BrowserRouter as Router, Route, Routes } from 'react-router-dom'
 // import pages
 import Home from './pages/Home'
 import About from './pages/About'
@@ -12,20 +12,12 @@ function App() {
     <div>
       <Router>
         <Navbar />
-        <Switch>
-          <Route exact path="/">
-            <Home />
-          </Route>
-          <Route path="/about">
-            <About />
-          </Route>
-          <Route path="/cocktail/:id">
-            <SingleCocktail />
-          </Route>
-          <Route path="*">
-            <Error />
-          </Route>
-        </Switch>
+        <Routes>
+          <Route element={<Home />} path="/" />
+          <Route element={<About />} path="/about" />
+          <Route element={<SingleCocktail />} path="/cocktail/:id" />
+          <Route element={<Error />} path="*" />
+        </Routes>
       </Router>
     </div>
   )
